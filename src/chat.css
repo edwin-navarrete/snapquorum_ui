@@ -1,0 +1,130 @@
+@import url('https://fonts.cdnfonts.com/css/berlin-sans-fb-demi');
+
+:root {
+  --color-primario: #FFA500; /* Define la variable de color personalizada */
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: 'Roboto Slab', serif;
+}
+
+.message-list {
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.message {
+  display: flex;
+  flex-direction: row;
+  margin: 8px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.message.grp0 {
+  align-self: flex-end;
+  background-color: #fd9e68ff;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.message.grp1 {
+  align-self: flex-end;
+  background-color: #935cffff;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.message.grp2 {
+  align-self: flex-end;
+  background-color: #ffc72aff;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+ 
+.message.theirs {
+  align-self: flex-start;
+  background-color: white;
+}
+
+.message .text {
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+.flex-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  min-width: 75px;
+}
+
+.single-chart {
+  width: 90%;
+  justify-content: space-around ;
+}
+
+.circular-chart {
+  display: block;
+  margin: 10px auto;
+  max-width: 80%;
+  max-height: 250px;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #4b4b4b63;
+  stroke-width: 3.8;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.circular-chart .circle {
+  stroke: #e3e3e3;
+}
+
+.percentage {
+  fill: white;
+  font-size: 0.8em;
+  text-anchor: middle;
+}
+
+
+
+.message .timestamp {
+  font-size: 12px;
+  color: white;
+}
+
+.message-input {
+  display: flex;
+  margin: 8px;
+}
+
+.message-input input[type="text"] {
+  flex-grow: 1;
+  margin-right: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+}
+
+.message-input button {
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background-color: #dcf
+}

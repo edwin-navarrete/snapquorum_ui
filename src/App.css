@@ -1,4 +1,6 @@
 .App {
+  font-family: 'Berlin Sans FB Demi', sans-serif;
+  background-color: #efe8de;
   text-align: center;
 }
 
@@ -14,7 +16,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

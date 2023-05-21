@@ -6,7 +6,7 @@ function SubjectView() {
   return (
     <div className="issue-subject" >
       <div className={`message theirs`}>
-        <div className="text"><i class="far fa-comments"></i>{issue.subject}</div>
+        <div className="text"><h4><i class="far fa-comments"></i>{issue.subject}</h4></div>
       </div>
     </div>
   );

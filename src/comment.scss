@@ -12,7 +12,12 @@ $sai: 'Roboto Slab', 'Saira Semi Condensed', sans-serif;
 
 /* lightsteelblue gainsboro antiquewhite */
 body{
-    background: lightgrey
+    background: rgb(102,205,248);
+    background: linear-gradient(180deg, rgba(102,205,248,1) 0%, rgba(54,130,240,1) 100%);
+}
+
+.comment-view h3 {
+    color:#373737
 }
 
 .comment-view .container{
@@ -23,6 +28,8 @@ body{
 }
 
 .comment-view form{
+    background: #ffffff29; /* #c1d1e4 */
+    @include other($ot-bs: $o-b);
     width: 100%;
     max-width: 400px;
     height: 100vh;
@@ -48,7 +55,7 @@ body{
     @include tf(#555)
 }
 
-i{
+h1 i, h2 i, h3 i, h4 i, p i, label i{
     @include bm($bm-mg: 0 10px 0 0)
 }
 

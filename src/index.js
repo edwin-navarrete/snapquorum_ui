@@ -8,12 +8,14 @@ import Root from './routes/RootView'
 import IssueCommentView from './issue_board/IssueCommentView';
 import './base0.scss';
 import './comment.scss';
+import './issue_list.css';
 import { Helmet } from 'react-helmet';
 
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import IssueList from './issue_board/IssueListView';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
         </Helmet>
         <Chat />
       </div>,
+  },
+  {
+    path: "/issue/:id/consensus",
+    element: <Chat />,
+  },
+  {
+    path: "/issue",
+    element: <IssueList />,
   },
   {
     path: "/issue/:id/comment",

@@ -1,0 +1,72 @@
+.item {
+  margin: 6px 0;
+  padding: 9px;
+  border-radius: 16px;
+  background: #ffffff4d;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.issue-list .item-list {
+  margin-bottom: 10px;
+  flex-grow: 1;
+
+}
+
+.item-text {
+  display: inline-block;
+  flex-grow: 1;
+}
+
+.toolbar button, .item-button {
+  font-size: larger;
+  margin: 3px;
+  padding: 3px 15px;
+  box-shadow: 0 8px 6px -6px #555;
+  background: #4eb2e1;
+  color: #f2f2f2;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.toolbar input {
+  padding: 8px;
+  margin: 3px;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 8px 6px -6px #555;
+  flex-grow: 1;
+}
+
+.issue-list #add-item-button {
+  margin-top: 20px;
+}
+
+.toolbar {
+  padding: 8px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+
+.issue-list .container{
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  height: 100vh;
+  padding: 0 8px;
+} 
+
+
+.issue-list {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+} 

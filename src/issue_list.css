@@ -32,6 +32,13 @@
   cursor: pointer;
 }
 
+.toolbar button:disabled, .item-button-disabled {
+  opacity: 0.6;
+  background: #99a5ab;
+  cursor: not-allowed;
+  /* Additional styling properties */
+}
+
 .toolbar input {
   padding: 8px;
   margin: 3px;
@@ -40,8 +47,28 @@
   box-sizing: border-box;
   border-radius: 8px;
   box-shadow: 0 8px 6px -6px #555;
+}
+
+.new-subject {
   flex-grow: 1;
 }
+
+.population-ico{
+  margin-left: 8px;
+  margin-top: 7px;
+  display: flex;
+  flex-direction: row;
+}
+
+.population-ico i:first-child {
+  margin-right: 4px;
+}
+
+.new-population{
+  width: 50px;
+  text-align: center;
+}
+
 
 .issue-list #add-item-button {
   margin-top: 20px;
@@ -58,7 +85,7 @@
 .issue-list .container{
   display: flex;
   flex-direction: column;
-  max-width: 400px;
+  max-width: 6 00px;
   height: 100vh;
   padding: 0 8px;
 } 

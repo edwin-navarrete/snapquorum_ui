@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Chat from './issue_board/IssueView';
-import Root from './routes/RootView'
-import IssueCommentView from './issue_board/IssueCommentView';
+import ConsensusView from './issue_board/ConsensusView';
+import CommentView from './issue_board/CommentView';
 import './base0.scss';
+import './chat.css';
 import './comment.scss';
 import './issue_list.css';
 import { Helmet } from 'react-helmet';
@@ -15,7 +14,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import IssueList from './issue_board/IssueListView';
+import IssueListView from './issue_board/IssueListView';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,20 +26,19 @@ const router = createBrowserRouter([
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
           <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet"></link>
         </Helmet>
-        <Chat />
       </div>,
   },
   {
     path: "/issue/:id/consensus",
-    element: <Chat />,
+    element: <ConsensusView />,
   },
   {
     path: "/issue",
-    element: <IssueList />,
+    element: <IssueListView />,
   },
   {
     path: "/issue/:id/comment",
-    element: <IssueCommentView />,
+    element: <CommentView />,
   },
 ]);
 

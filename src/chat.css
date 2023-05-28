@@ -16,6 +16,12 @@
   overflow-y: auto;
 }
 
+.message-list span{
+  font-style: italic;
+  font-size: smaller;
+  float:right
+}
+
 .message {
   display: flex;
   flex-direction: row;
@@ -25,35 +31,37 @@
   box-shadow: 0 8px 6px -6px #555;
 }
 
-.message.grp0 {
+.message.group {
   align-self: flex-end;
-  background-color: #fd9e68ff;
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.message.grp1 {
-  align-self: flex-end;
-  background-color: #935cffff;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
+.message.grp0 { background-color: #7fb985ff ; }
+.message.grp1 { background-color: #b39d6dff; }
+.message.grp2 { background-color: #d2a548ff; }
+.message.grp3 { background-color: #ffc300ff; }
+.message.grp4 { background-color: #ff8c00ff ; }
+.message.grp5 { background-color: #d9550dff ; }
+.message.grp6 { background-color: #c96c37ff; }
+.message.grp7 { background-color: #b34212ff; }
+.message.grp8 { background-color: #6e4c1eff; }
 
-.message.grp2 {
-  align-self: flex-end;
-  background-color: #ffc72aff;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
- 
+
+
 .message.theirs {
   align-self: flex-start;
-  background-color: white;
+  background-color: whitesmoke;
+}
+
+.message.theirs .percentage {
+  fill: black;
 }
 
 .message .text {
   font-size: 24px;
   line-height: 1.4;
+  flex-grow: 1;
 }
 
 .flex-wrapper {

@@ -1,13 +1,13 @@
 
 import './App.css';
 import './chat.css';
-import Chat from './issue_board/IssueView';
+import Chat from './issue_board/ConsensusView';
 import { Helmet } from 'react-helmet';
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import IssueCommentView from './issue_board/IssueCommentView';
+import CommentView from './issue_board/CommentView';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet"></link>
       </Helmet>      
       <Routes>
-        <Route path="/issue/:id/comment" component={IssueCommentView} />
+        <Route path="/issue/:id/comment" component={CommentView} />
         <Route path="/issue/:id/consensus" component={Chat} />
       </Routes>
     </Router>

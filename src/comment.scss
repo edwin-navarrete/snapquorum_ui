@@ -101,6 +101,11 @@ h1 i, h2 i, h3 i, h4 i, p i, label i{
         }
 }
 
+.comment-view button:disabled{
+    background: darkgray;
+    cursor: not-allowed;
+}
+
 @media (max-width: 425px){
     form{
         @include bm(100%)

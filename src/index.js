@@ -4,6 +4,8 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ConsensusView from './issue_board/ConsensusView';
 import CommentView from './issue_board/CommentView';
+import CommentShareView from './issue_board/CommentShareView';
+
 import './base0.scss';
 import './chat.css';
 import './comment.scss';
@@ -15,6 +17,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import IssueListView from './issue_board/IssueListView';
+import GlobalContext from './GlobalContext';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +30,9 @@ const router = createBrowserRouter([
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
           <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet"></link>
         </Helmet>
+        <GlobalContext.Provider value={{ip:'hola'}}>
+          <CommentShareView></CommentShareView>
+        </GlobalContext.Provider>        
       </div>,
   },
   {
@@ -40,12 +47,16 @@ const router = createBrowserRouter([
     path: "/issue/:id/comment",
     element: <CommentView />,
   },
+  {
+    path: "/issue/:id/commentshare",
+    element: <CommentShareView />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-     <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

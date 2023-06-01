@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import GlobalContext from '../GlobalContext'
 
 function CommentView() {
+    const navigate = useNavigate();
+    const { host } = useContext(GlobalContext);
     const { id } = useParams();
     const [subject, setSubject] = useState("");
     const [participant, setParticipant] = useState('');
@@ -11,7 +14,7 @@ function CommentView() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/issues/${id}`);
+                const response = await axios.get(`http://${host}:5000/issues/${id}`);
                 if (response.status === 200 && response.data.subject ) {
                     setSubject( response.data.subject );
                 }
@@ -21,7 +24,7 @@ function CommentView() {
         };
 
         fetchData();
-    }, [id]);
+    }, [host, id]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -32,7 +35,7 @@ function CommentView() {
         };
     
         try {
-          const response = await fetch(`http://localhost:5000/issues/${id}/comments`, {
+          const response = await fetch(`http://${host}:5000/issues/${id}/comments`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -42,6 +45,7 @@ function CommentView() {
     
           if (response.ok) {
             console.log('Mensaje enviado correctamente');
+            navigate(`/issue/${id}/consensus`);            
           } else {
             console.error('Error al enviar el mensaje');
           }
@@ -60,7 +64,9 @@ function CommentView() {
                             <i class="far fa-user"></i>Tu identificación
                         </label>
                         <input 
-                            name="participant" type="text" placeholder="Número de apartamento" required
+                            type="text"
+                            name="participant"
+                            placeholder="Escribe tu identificación asignada" required
                             value={participant}
                             onChange={(e) => setParticipant(e.target.value)} ></input>
                     </div>

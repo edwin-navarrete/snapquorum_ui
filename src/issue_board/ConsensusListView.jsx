@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-
+import GlobalContext from '../GlobalContext'
 import axios from 'axios';
 
 function ConsensusListView({ messages }) {
   const { id } = useParams();
+  const { host } = useContext(GlobalContext)
   const [consensus, setConsensus] = useState([]);
   const [curTime, setCurTimer] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/issues/${id}/consensus`);
+            const response = await axios.get(`http://${host}:5000/issues/${id}/consensus`);
             if (response.status === 200 && response.data.subject ) {
                 console.log( 'CONSENSUS:' + response.data.consensus)
                 setConsensus( response.data.consensus );

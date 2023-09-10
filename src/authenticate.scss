@@ -1,0 +1,90 @@
+@import './base0.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Saira+Semi+Condensed&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css');
+$all: all .5s ease;
+$sai: 'Roboto Slab', 'Saira Semi Condensed', sans-serif;
+
+*{
+    @include tf($tf-fm: $sai);
+    @include other($ot-tsi: $all)
+}
+
+/* lightsteelblue gainsboro antiquewhite */
+body{
+    background: rgb(102,205,248);
+    background: linear-gradient(180deg, rgba(102,205,248,1) 0%, rgba(54,130,240,1) 100%);
+}
+
+// .auth-container{
+//     width: 100%;
+//     height: 100vh;
+//     display: flex;
+//     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+//     color: white;
+//     font-size: larger;
+//     @include flex-center($rw);
+// }
+
+.auth-container {
+    max-width: 250px;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 20px;
+    color: white;
+    border-radius: 8px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.auth-container h1 {
+    text-align: center;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: #ffcc00;
+    text-align: center;
+    margin-top: 10px;
+}
+
+//   .auth-input input {
+//     flex-grow: 1;
+//     margin-right: 8px;
+//     padding: 8px;
+//     border-radius: 8px;
+//     border: none;
+//   }
+
+//   .auth-view button{
+//     background: #2f4ad0;
+//     @include bm($bm-pd: 8px 16px, $bm-mg: 16px 0 55px 0);
+//     @include tf(#fff);
+//     border: none;
+//     @include other($ot-br: 4px, $ot-cr: pointer, $ot-bs: $o-b);
+//         &:hover{
+//             @include tf($tf-ls: 2px);
+//             @include other($ot-bs: none)
+//         }
+// }

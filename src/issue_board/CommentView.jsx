@@ -1,78 +1,69 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import GlobalContext from '../GlobalContext'
+import getAxiosInstance from './axiosConfig';
 
 function CommentView() {
     const navigate = useNavigate();
-    const { host } = useContext(GlobalContext);
     const { id } = useParams();
     const [subject, setSubject] = useState("");
-    const [participant, setParticipant] = useState('');
     const [message, setMessage] = useState('');
+
+    const handleLoginRedirect = () => {
+        const redirectUrl = window.location.pathname;
+        window.location.href = `/login?redirect=${encodeURIComponent(redirectUrl)}`;
+    }
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://${host}:5000/issues/${id}`);
+                console.log(`Token COMMENT ${localStorage.getItem('authToken')}`)
+                const response = await getAxiosInstance().get(`/issues/${id}`);
                 if (response.status === 200 && response.data.subject ) {
                     setSubject( response.data.subject );
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
+                if (error.response.status === 401){
+                    debugger;
+                    handleLoginRedirect();
+                }
             }
         };
 
         fetchData();
-    }, [host, id]);
+    }, [id]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
     
         const data = {
-          participant: participant,
           message: message
         };
     
         try {
-          const response = await fetch(`http://${host}:5000/issues/${id}/comments`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-          });
-    
-          if (response.ok) {
+          const response = await getAxiosInstance().post(`/issues/${id}/comments`, data);
+          if (response.status === 200) {
             console.log('Mensaje enviado correctamente');
             navigate(`/issue/${id}/consensus`);            
           } else {
             console.error('Error al enviar el mensaje');
           }
         } catch (error) {
-          console.error('Error al realizar la solicitud:', error);
+            console.error('Error al realizar la solicitud:', error);
+            if (error.response.status === 401){
+                handleLoginRedirect();
+            }
         }
       };
 
     return (
-        <div class="comment-view">
-            <div class="container">
+        <div className="comment-view">
+            <div className="container">
                 <form onSubmit={handleSubmit}>
-                    <h3><i class="far fa-comments"></i>{subject}</h3>
-                    <div class="field" tabindex="1">
-                        <label for="participant">
-                            <i class="far fa-user"></i>Tu identificación
-                        </label>
-                        <input 
-                            type="text"
-                            name="participant"
-                            placeholder="Escribe tu identificación asignada" required
-                            value={participant}
-                            onChange={(e) => setParticipant(e.target.value)} ></input>
-                    </div>
-                    <div class="field" tabindex="3">
-                        <label for="message">
-                            <i class="far fa-edit"></i>Tu comentario
+                    <h3><i className="far fa-comments"></i>{subject}</h3>
+                    <div className="field" tabIndex="1">
+                        <label htmlFor="message">
+                            <i className="far fa-edit"></i> ({localStorage.getItem('user')}) Mi comentario: 
                         </label>
                         <textarea 
                             name="message" placeholder="Escriba aquí" required
@@ -80,8 +71,8 @@ function CommentView() {
                             onChange={(e) => setMessage(e.target.value)}>
                         </textarea>
                     </div>
-                    <div class="btn-container">
-                        <button disabled={!participant || !message} type="submit">Enviar Mensaje</button>
+                    <div className="btn-container">
+                        <button disabled={!message} type="submit">Enviar Mensaje</button>
                     </div>
                 </form>
             </div>

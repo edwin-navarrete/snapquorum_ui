@@ -1,18 +1,16 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import GlobalContext from '../GlobalContext'
 
-import axios from 'axios';
+import getAxiosInstance from './axiosConfig';
 import ConsensusListView from './ConsensusListView'
 
 function ConsensusView() {
-  const { host }  = useContext(GlobalContext);
   const { id } = useParams();
   const [issue, setIssue] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
         try {
-            var response = await axios.get(`http://${host}:5000/issues/${id}`);
+            var response = await getAxiosInstance().get(`/issues/${id}`);
             if (response.status === 200 && response.data ) {
                 setIssue( response.data );
             }          

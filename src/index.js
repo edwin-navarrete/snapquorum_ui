@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import AuthView from './issue_board/authenticateView'
 import ConsensusView from './issue_board/ConsensusView';
 import CommentView from './issue_board/CommentView';
 import CommentShareView from './issue_board/CommentShareView';
@@ -9,6 +10,7 @@ import CommentShareView from './issue_board/CommentShareView';
 import './base0.scss';
 import './chat.css';
 import './comment.scss';
+import './authenticate.scss';
 import './issue_list.css';
 import { Helmet } from 'react-helmet';
 
@@ -34,6 +36,10 @@ const router = createBrowserRouter([
           <CommentShareView></CommentShareView>
         </GlobalContext.Provider>        
       </div>,
+  },
+  {
+    path: "/login",
+    element: <AuthView />,
   },
   {
     path: "/issue/:id/consensus",

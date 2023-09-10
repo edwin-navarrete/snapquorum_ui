@@ -1,56 +1,65 @@
-import React, { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
-import GlobalContext from '../GlobalContext'
+import React, { useEffect, useState } from 'react';
+import getAxiosInstance from './axiosConfig';
 
 function IssueItem({ issue }) {
-  const { host } = useContext(GlobalContext)
   return (
     <div className="item">
       <span className="item-text">{issue.subject}</span><span>{Math.round(issue.participation * 100)}%/{issue.population}</span>
-      <a href={`http://${host}:3000/issue/${issue.id}/commentshare`}
+      <a href={`/issue/${issue.id}/commentshare`}
         className="item-button"><i class="fas fa-share-alt"></i></a>
-      {issue.participation > 0.05 && <a disabled href={`http://${host}:3000/issue/${issue.id}/consensus`}
+      {issue.participation > 0.05 && <a disabled href={`/issue/${issue.id}/consensus`}
         className="item-button"><i class="far fa-comments"></i></a>}
     </div>
   );
 }
 
 function IssueListView() {
-  const { host } = useContext(GlobalContext)
   const [items, setItems] = useState([]);
   const [newSubject, setNewSubject] = useState('');
   const [newPopulation, setNewPopulation] = useState('10');
 
+  const handleLoginRedirect = () => {
+    const redirectUrl = window.location.pathname;
+    window.location.href = `/login?redirect=${encodeURIComponent(redirectUrl)}`;
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://${host}:5000/issues`);
+        const response = await getAxiosInstance().get(`/issues`);
         if (response.status === 200 && response.data.length > 0) {
           setItems(response.data);
         }
       } catch (error) {
         console.error('Error fetching data:', error);
+        debugger
+        if (error.response.status === 403){
+          handleLoginRedirect();
+        }
       }
     };
 
     fetchData();
-  }, [host]);
+  }, []);
 
   const addIssue = () => {
     if (newSubject) {
-      axios.post(`http://${host}:5000/issues`, {
+      getAxiosInstance().post(`/issues`, {
         "subject": newSubject,
         "population": parseInt(newPopulation)
       }).then(response => {
         console.log(response.data);
+        debugger;
         // Handle the response as needed
         setItems(prevItems => [...prevItems, response.data]);
         setNewSubject('');
       })
         .catch(error => {
           console.error(error);
-          // Handle the error as needed
+          if (error.response.status === 401){
+              debugger;
+              handleLoginRedirect();
+          }
         });
 
     }

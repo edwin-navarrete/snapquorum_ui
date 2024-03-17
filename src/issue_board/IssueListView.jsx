@@ -6,9 +6,9 @@ function IssueItem({ issue }) {
     <div className="item">
       <span className="item-text">{issue.subject}</span><span>{Math.round(issue.participation * 100)}%/{issue.population}</span>
       <a href={`/issue/${issue.id}/commentshare`}
-        className="item-button"><i class="fas fa-share-alt"></i></a>
+        className="item-button"><i className="fas fa-share-alt"></i></a>
       {issue.participation > 0.05 && <a disabled href={`/issue/${issue.id}/consensus`}
-        className="item-button"><i class="far fa-comments"></i></a>}
+        className="item-button"><i className="far fa-comments"></i></a>}
     </div>
   );
 }
@@ -71,9 +71,9 @@ function IssueListView() {
   };
 
   return (
-    <div class="issue-list">
-      <div class="container">
-        <h1><i class="fas fa-comments"></i>Asuntos</h1>
+    <div className="issue-list">
+      <div className="container">
+        <h1><i className="fas fa-comments"></i>Asuntos</h1>
 
         <div className="item-list">
           {items.map((item, index) => (
@@ -89,12 +89,12 @@ function IssueListView() {
             value={newSubject}
             onChange={e => setNewSubject(e.target.value)}
           />
-          <div class="population-ico">
-            <i class="fas fa-users"></i>
-            <i class="fas fa-caret-right"></i>
+          <div className="population-ico">
+            <i className="fas fa-users"></i>
+            <i className="fas fa-caret-right"></i>
           </div>
           <input
-            class="new-population"
+            className="new-population"
             type="text"
             placeholder='#'
             required
@@ -102,7 +102,7 @@ function IssueListView() {
             onChange={handlePopulationChange}
           />
 
-          <button disabled={!newSubject || !newPopulation} onClick={addIssue}><i class="fas fa-plus"></i></button>
+          <button disabled={!newSubject || !newPopulation} onClick={addIssue}><i className="fas fa-plus"></i></button>
         </div>
       </div>
     </div>

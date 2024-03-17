@@ -6,6 +6,7 @@ import AuthView from './issue_board/authenticateView'
 import ConsensusView from './issue_board/ConsensusView';
 import CommentView from './issue_board/CommentView';
 import CommentShareView from './issue_board/CommentShareView';
+import FatalErrorView from './issue_board/FatalErrorView';
 
 import './base0.scss';
 import './chat.css';
@@ -32,10 +33,14 @@ const router = createBrowserRouter([
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
           <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet"></link>
         </Helmet>
-        <GlobalContext.Provider value={{ip:'hola'}}>
+        <GlobalContext.Provider>
           <CommentShareView></CommentShareView>
         </GlobalContext.Provider>        
       </div>,
+  },
+  {
+    path: "/error",
+    element: <FatalErrorView />,
   },
   {
     path: "/login",

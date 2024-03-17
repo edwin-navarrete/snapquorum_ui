@@ -26,16 +26,16 @@ function ConsensusView() {
     < div className="chat" >
       <div className="issue-subject" >
         <div className={`message theirs`}>
-          <div className="text"><h4><i class="far fa-comments"></i>{issue.subject}</h4></div>
-          <div class="flex-wrapper">
-            <div class="single-chart">
-              <svg viewBox="0 0 36 36" class={`circular-chart`}>
-                <path class="circle-bg"
+          <div className="text"><h4><i className="far fa-comments"></i>{issue.subject}</h4></div>
+          <div className="flex-wrapper">
+            <div className="single-chart">
+              <svg viewBox="0 0 36 36" className={`circular-chart`}>
+                <path className="circle-bg"
                   d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                <path class="circle"
+                <path className="circle"
                   stroke-dasharray={`${issue.participation * 100}, 100`}
                   d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                <text x="18" y="22" class="percentage">{Math.round(issue.participation * 100)}%</text>
+                <text x="18" y="22" className="percentage">{Math.round(issue.participation * 100)}%</text>
               </svg>
             </div>
           </div>  

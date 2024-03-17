@@ -1,27 +1,37 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import QRCode from 'qrcode.react';
 import { useParams } from 'react-router-dom';
-import GlobalContext from '../GlobalContext'
+import { ui_host } from '../GlobalContext';
 
 const CommentShareView = () => {
-    const { host }  = useContext(GlobalContext);
     const { id } = useParams();
 
-    const qrValue = `http://${host}:3000/issue/${id}/comment`; // URL o texto que deseas codificar en el código QR
+    useEffect(() => {
+        const handleLoginRedirect = () => {
+            const redirectUrl = '/l';
+            window.location.href = `/login?redirect=${encodeURIComponent('/issue')}`;
+        }
+
+        if (id === undefined) {
+            handleLoginRedirect();
+        }
+    }, [id]); 
+
+    const qrValue = `http://${ui_host}:3000/issue/${id}/comment`; // URL o texto que deseas codificar en el código QR
 
     return (
-        <div class="comment-share container">
+        <div className="comment-share container">
             <div className="comment-rules">
                 <h3>Para opinar visita:</h3>
                     {qrValue}
                 <h3>Reglas para opinar:</h3>
-                <i class="far fa-check-circle correct"></i>
+                <i className="far fa-check-circle correct"></i>
                 <ul>
                     <li>En Español</li>
                     <li>Serio y respetuoso</li>
                     <li>Menos de 150 palabras</li>
                 </ul>
-                <i class="far fa-times-circle incorrect"></i>
+                <i className="far fa-times-circle incorrect"></i>
                 <ul>
                     <li>Obscenidad o grosería</li>
                     <li>Ironía</li>

@@ -1,8 +1,10 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const FatalErrorView = () => {
-  const { error_msg } = useParams();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const error_msg = queryParams.get('error_msg');
   return (
     <div>
       <h1>Error Interno</h1>

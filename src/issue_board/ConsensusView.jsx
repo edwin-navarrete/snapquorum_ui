@@ -33,7 +33,7 @@ function ConsensusView() {
                 <path className="circle-bg"
                   d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                 <path className="circle"
-                  stroke-dasharray={`${issue.participation * 100}, 100`}
+                  strokeDasharray={`${issue.participation * 100}, 100`}
                   d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                 <text x="18" y="22" className="percentage">{Math.round(issue.participation * 100)}%</text>
               </svg>

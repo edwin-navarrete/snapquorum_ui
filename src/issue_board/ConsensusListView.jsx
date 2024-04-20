@@ -43,11 +43,11 @@ function ConsensusListView({ messages }) {
                 <path className="circle-bg"
                   d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                 <path className="circle"
-                  stroke-dasharray={`${group.share * 100}, 100`}
+                  strokeDasharray={`${group.share * 100}, 100`}
                   d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                 <text x="18" y="22" className="percentage">{Math.round(group.share * 100)}%</text>
               </svg>
-              <span>{Math.round(group.agg * 100)}%</span>
+              <span>Acum:{Math.round(group.agg * 100)}%</span>
             </div>
           </div>        
           <div className="text">{group.top[Math.trunc((curTime+idx*4)/7) % group.top.length ].comment}</div>

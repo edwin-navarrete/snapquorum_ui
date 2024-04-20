@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import QRCode from 'qrcode.react';
 import { useParams } from 'react-router-dom';
-import { ui_host } from '../GlobalContext';
 
 const CommentShareView = () => {
     const { id } = useParams();
@@ -17,7 +16,7 @@ const CommentShareView = () => {
         }
     }, [id]); 
 
-    const qrValue = `http://${ui_host}:3000/issue/${id}/comment`; // URL o texto que deseas codificar en el código QR
+    const qrValue = `${window.location.origin}/issue/${id}/comment`; // URL o texto que deseas codificar en el código QR
 
     return (
         <div className="comment-share container">
